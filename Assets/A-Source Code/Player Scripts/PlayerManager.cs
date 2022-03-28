@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private string verticalAxis = "Vertical";
     [SerializeField] private string sprintButton = "Sprint";
     [SerializeField] private string crouchButton = "Crouch";
+    [SerializeField] private string fireButton = "Fire";
     #endregion
 
     #region Input Store Variables
@@ -19,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     private Vector2 _mousePosition;
     private bool _sprintInput;
     private bool _crouchInput;
+    private bool _fireInput;
     #endregion
 
     #region Input Get Methods
@@ -26,6 +28,7 @@ public class PlayerManager : MonoBehaviour
     public Vector2 mousePosition { get { return _mousePosition; } }
     public bool sprintInput { get { return _sprintInput; } }
     public bool crouchInput { get { return _crouchInput; } }
+    public bool fireInput { get { return _fireInput; } }
     #endregion
 
     #region Visual & Audible Exposure Scores
@@ -61,9 +64,10 @@ public class PlayerManager : MonoBehaviour
         //Read in the mouse position in world coordinates.
         _mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        //Get the player's sprint and crouch input.
+        //Get the player's sprint, crouch, and fire input.
         _sprintInput = Input.GetButton(sprintButton);
         _crouchInput = Input.GetButton(crouchButton);
+        _fireInput = Input.GetButton(fireButton);
     }
 
     private float CalculateVisualExposure()

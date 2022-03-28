@@ -56,21 +56,24 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\A-Source Code\Debug Scripts\DebugCommandList.cs" />
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\A-Source Code\Debug Scripts\CommandManager.cs" />
     <Compile Include="Assets\A-Source Code\PixelatedView.cs" />
+    <Compile Include="Assets\A-Source Code\Debug Scripts\DebugManager.cs" />
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerCamera.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\DebugCommand.cs" />
+    <Compile Include="Assets\A-Source Code\Player Scripts\PlayerEquipment.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\DebugConsole.cs" />
-    <Compile Include="Assets\A-Source Code\Debug Scripts\DebugCommandList.cs" />
-    <Compile Include="Assets\A-Source Code\Debug Scripts\DebugManager.cs" />
-    <Compile Include="Assets\A-Source Code\Debug Scripts\CommandManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\C-Unity Assets\Shaders\VisionEntity.shader" />
     <None Include="Assets\C-Unity Assets\Shaders\VisionBackground.shader" />
+    <None Include="Assets\C-Unity Assets\Shaders\VisionFog.shader" />
     <None Include="Assets\C-Unity Assets\Shaders\Include\ShapeLightVisionEntity.hlsl" />
     <None Include="Assets\C-Unity Assets\Shaders\Include\ShapeLightVisionBackground.hlsl" />
+    <None Include="Assets\C-Unity Assets\Shaders\Include\ShapeLightVisionFog.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
