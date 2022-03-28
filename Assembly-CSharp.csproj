@@ -58,14 +58,20 @@
   <ItemGroup>
     <Compile Include="Assets\A-Source Code\Debug Scripts\DebugCommandList.cs" />
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\A-Source Code\Singleton.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\CommandManager.cs" />
-    <Compile Include="Assets\A-Source Code\PixelatedView.cs" />
+    <Compile Include="Assets\A-Source Code\Event Scripts\GameEvent.cs" />
+    <Compile Include="Assets\A-Source Code\UI Scripts\CursorManager.cs" />
+    <Compile Include="Assets\A-Source Code\UI Scripts\PixelatedView.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\DebugManager.cs" />
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerCamera.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\DebugCommand.cs" />
+    <Compile Include="Assets\A-Source Code\Event Scripts\GameEventListener.cs" />
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerEquipment.cs" />
+    <Compile Include="Assets\A-Source Code\UI Scripts\Cursor Objects\MouseCursor.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\DebugConsole.cs" />
+    <Compile Include="Assets\A-Source Code\Player Scripts\Equipment Objects\Equipment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\C-Unity Assets\Shaders\VisionEntity.shader" />

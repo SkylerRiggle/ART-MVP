@@ -6,6 +6,9 @@
         _MaskTex("Mask", 2D) = "white" {}
         _NormalMap("Normal Map", 2D) = "bump" {}
 
+        _ScrollSpeedX("Scroll X Speed", Float) = 0.25
+        _ScrollSpeedY("Scroll Y Speed", Float) = 0.25
+
         // Legacy properties. They're here so that materials using this shader can gracefully fallback to the legacy sprite shader.
         [HideInInspector] _Color("Tint", Color) = (1,1,1,1)
         [HideInInspector] _RendererColor("RendererColor", Color) = (1,1,1,1)
@@ -14,13 +17,13 @@
         [HideInInspector] _EnableExternalAlpha("Enable External Alpha", Float) = 0
     }
 
-    HLSLINCLUDE
-    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-    ENDHLSL
+        HLSLINCLUDE
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            ENDHLSL
 
-    SubShader
-    {
-        Tags {"Queue" = "Transparent" "RenderType" = "Transparent" "RenderPipeline" = "UniversalPipeline" }
+            SubShader
+        {
+            Tags {"Queue" = "Transparent" "RenderType" = "Transparent" "RenderPipeline" = "UniversalPipeline" }
 
         Blend SrcAlpha OneMinusSrcAlpha
         Cull Off
@@ -64,6 +67,8 @@
             SAMPLER(sampler_NormalMap);
             half4 _MainTex_ST;
             half4 _NormalMap_ST;
+            float _ScrollSpeedX;
+            float _ScrollSpeedY;
 
             #if USE_SHAPE_LIGHT_TYPE_0
             SHAPE_LIGHT(0)
@@ -87,6 +92,8 @@
 
                 o.positionCS = TransformObjectToHClip(v.positionOS);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv.x += _Time * _ScrollSpeedX;
+                o.uv.y += _Time * _ScrollSpeedY;
                 float4 clipVertex = o.positionCS / o.positionCS.w;
                 o.lightingUV = ComputeScreenPos(clipVertex).xy;
                 o.color = v.color;
