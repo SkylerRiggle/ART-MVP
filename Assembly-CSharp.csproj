@@ -56,9 +56,11 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\A-Source Code\Manager Scripts\AudioManager.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\DebugCommandList.cs" />
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerManager.cs" />
-    <Compile Include="Assets\A-Source Code\Singleton.cs" />
+    <Compile Include="Assets\A-Source Code\Player Scripts\Equipment Objects\Equipment.cs" />
+    <Compile Include="Assets\A-Source Code\Manager Scripts\Singleton.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\CommandManager.cs" />
     <Compile Include="Assets\A-Source Code\Event Scripts\GameEvent.cs" />
     <Compile Include="Assets\A-Source Code\UI Scripts\CursorManager.cs" />
@@ -71,7 +73,6 @@
     <Compile Include="Assets\A-Source Code\Player Scripts\PlayerEquipment.cs" />
     <Compile Include="Assets\A-Source Code\UI Scripts\Cursor Objects\MouseCursor.cs" />
     <Compile Include="Assets\A-Source Code\Debug Scripts\DebugConsole.cs" />
-    <Compile Include="Assets\A-Source Code\Player Scripts\Equipment Objects\Equipment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\C-Unity Assets\Shaders\VisionEntity.shader" />

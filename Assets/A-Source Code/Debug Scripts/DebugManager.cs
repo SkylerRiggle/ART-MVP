@@ -1,12 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class DebugManager : MonoBehaviour
+public class DebugManager : Singleton<DebugManager>
 {
     #region Debug Local Properties
-    private static DebugManager _instance;
-    public static DebugManager instance {get {return _instance;}}
-
     private DebugConsole console;
 
     private bool showConsole = false;
@@ -46,19 +43,8 @@ public class DebugManager : MonoBehaviour
 
     private void Awake()
     {
-        #region Unity-Specific Singleton Pattern
-
-        //Check if this object already exists.
-        if (_instance != null && _instance != this) {
-            Destroy(gameObject);
-            return;
-        }
-
-        //Store this instance and guarantee its persistence.
-        _instance = this;
-        DontDestroyOnLoad(this);
-
-        #endregion
+        //Unity singleton pattern.
+        Initialize();
 
         //Create and style the debug console.
         console = new DebugConsole();

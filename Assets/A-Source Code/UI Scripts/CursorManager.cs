@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CursorManager : Singleton
+public class CursorManager : MonoBehaviour
 {
     private RectTransform rectTransform;
     private Image cursorImage;
@@ -10,7 +10,10 @@ public class CursorManager : Singleton
     [SerializeField] private MouseCursor defaultCursor = null;
     [SerializeField] private float percentageSize = 0.05f;
 
-    private void Awake() => SetCursor(defaultCursor);
+    private void Awake()
+    {
+        SetCursor(defaultCursor);
+    }
 
     private void Update()
     {
@@ -41,7 +44,7 @@ public class CursorManager : Singleton
 
     public void SetCursor(MouseCursor newCursor)
     {
-        if (newCursor == null) { return; }
+        if (newCursor == null) { SetCursor(defaultCursor); return; }
 
         if (cursorImage == null) { cursorImage = GetComponent<Image>(); }
 
