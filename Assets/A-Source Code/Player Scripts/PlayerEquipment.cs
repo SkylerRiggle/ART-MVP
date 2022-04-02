@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
-    [SerializeField] private List<Equipment> loadout = new List<Equipment>();
+    [SerializeField] private List<Equipment> equipment = new List<Equipment>();
+    private int selectionIndex = 0;
 
-    private Equipment currentEquipment;
+    private void Update()
+    {
+        
+    }
 }

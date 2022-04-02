@@ -13,29 +13,23 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private string sprintButton = "Sprint";
     [SerializeField] private string crouchButton = "Crouch";
     [SerializeField] private string fireButton = "Fire";
-    #endregion
-
-    #region Input Store Variables
-    private Vector2 _moveInput;
-    private Vector2 _mousePosition;
-    private bool _sprintInput;
-    private bool _crouchInput;
-    private bool _fireInput;
+    [SerializeField] private string reloadButton = "Reload";
     #endregion
 
     #region Input Get Methods
-    public Vector2 moveInput { get { return _moveInput; } }
-    public Vector2 mousePosition { get { return _mousePosition; } }
-    public bool sprintInput { get { return _sprintInput; } }
-    public bool crouchInput { get { return _crouchInput; } }
-    public bool fireInput { get { return _fireInput; } }
+    public Vector2 moveInput { get { return ReadInputVector(horizontalAxis, verticalAxis); } }
+    public Vector2 mousePosition { get { return mainCamera.ScreenToWorldPoint(Input.mousePosition); } }
+    public bool sprintInput { get { return Input.GetButton(sprintButton); } }
+    public bool crouchInput { get { return Input.GetButton(crouchButton); } }
+    public bool fireInput { get { return Input.GetButton(fireButton); } }
+    public bool reloadInput { get { return Input.GetButton(reloadButton); } }
+    public Vector2 scrollInput { get { return Input.mouseScrollDelta; } }
     #endregion
 
     #region Visual & Audible Exposure Scores
-    private static float _visualExposure;
-    private static float _audibleExposure;
-    public static float visualExposure { get { return _visualExposure; } }
-    public static float audibleExposure { get { return _audibleExposure; } }
+    public float visualExposure { get { return CalculateVisualExposure(); } }
+    private float _audibleExposure;
+    public float audibleExposure { get { return _audibleExposure; } }
 
     [Header("Exposure Controls:")]
     [SerializeField] private float delayPerVolume = 0.5f;
@@ -45,30 +39,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake() => mainCamera = Camera.main;
 
-    private void Update()
-    {
-        //Read in player input.
-        HandleInput();
-
-        //Calculate the player's visual exposure.
-        _visualExposure = CalculateVisualExposure();
-    }
-
-    private void HandleInput()
-    {
-        //Read in a normalized move input vector.
-        _moveInput.x = Input.GetAxisRaw(horizontalAxis);
-        _moveInput.y = Input.GetAxisRaw(verticalAxis);
-        _moveInput = _moveInput.normalized;
-
-        //Read in the mouse position in world coordinates.
-        _mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
-        //Get the player's sprint, crouch, and fire input.
-        _sprintInput = Input.GetButton(sprintButton);
-        _crouchInput = Input.GetButton(crouchButton);
-        _fireInput = Input.GetButton(fireButton);
-    }
+    private Vector2 ReadInputVector(string xAxisName, string yAxisName) 
+        => new Vector2(Input.GetAxisRaw(xAxisName), Input.GetAxisRaw(yAxisName)).normalized;
 
     private float CalculateVisualExposure()
     {
@@ -77,7 +49,7 @@ public class PlayerManager : MonoBehaviour
 
         //Grab all nearby colliders.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, lightDetectionRadius);
-
+        
         foreach (Collider2D collider in colliders)
         {
             //Calculate the light value for all surrounding lights.
@@ -91,7 +63,7 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
-
+        
         //Return the calculated result.
         return result;
     }

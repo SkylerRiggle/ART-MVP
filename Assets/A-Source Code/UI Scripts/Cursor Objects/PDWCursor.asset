@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PDWCursor
   m_EditorClassIdentifier: 
   _normalSprite: {fileID: 21300000, guid: c70b02e1a64536142b7476486eb18d48, type: 3}
-  _clickedSprite: {fileID: 21300000, guid: 9e91f55568c485948bf6cc86b72685c6, type: 3}
+  _clickedSprite: {fileID: 21300000, guid: 2e671b6a94a8aae48b98521bc25c85df, type: 3}
