@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private string sprintButton = "Sprint";
     [SerializeField] private string crouchButton = "Crouch";
     [SerializeField] private string fireButton = "Fire";
+    [SerializeField] private string aimButton = "Aim";
     [SerializeField] private string reloadButton = "Reload";
     #endregion
 
@@ -22,6 +23,7 @@ public class PlayerManager : MonoBehaviour
     public bool sprintInput { get { return Input.GetButton(sprintButton); } }
     public bool crouchInput { get { return Input.GetButton(crouchButton); } }
     public bool fireInput { get { return Input.GetButton(fireButton); } }
+    public bool aimInput { get { return Input.GetButton(aimButton); } }
     public bool reloadInput { get { return Input.GetButton(reloadButton); } }
     public Vector2 scrollInput { get { return Input.mouseScrollDelta; } }
     #endregion

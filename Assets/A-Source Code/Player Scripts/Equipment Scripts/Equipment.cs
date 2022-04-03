@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipment : MonoBehaviour
+public abstract class Equipment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private MouseCursor _cursor = null;
+    public MouseCursor cursor { get { return _cursor; } }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void Fire(); 
+    public abstract void Aim();
+    public abstract void Reload();
 }

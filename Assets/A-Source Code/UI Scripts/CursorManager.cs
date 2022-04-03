@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CursorManager : MonoBehaviour
+public class CursorManager : Singleton<CursorManager>
 {
     private RectTransform rectTransform;
     private Image cursorImage;
@@ -12,6 +12,7 @@ public class CursorManager : MonoBehaviour
 
     private void Awake()
     {
+        Initialize();
         SetCursor(defaultCursor);
     }
 
