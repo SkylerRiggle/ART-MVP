@@ -18,10 +18,10 @@ public class CursorManager : Singleton<CursorManager>
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             cursorImage.sprite = currentCursor.clickedSprite;
-        } else if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+        } else if (Input.GetMouseButtonUp(0))
         {
             cursorImage.sprite = currentCursor.normalSprite;
         }
