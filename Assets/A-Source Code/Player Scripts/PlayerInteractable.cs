@@ -17,25 +17,32 @@ public class PlayerInteractable : MonoBehaviour
 
     private void Update()
     {
-        if (playerManager.fireInput)
-        {
-            currentWeapon?.Fire();
-        } else if (playerManager.reloadInput)
+        if (playerManager.reloadInput)
         {
             currentWeapon?.Reload();
+        } else
+        {
+            if (playerManager.fireInput)
+            {
+                currentWeapon?.Fire();
+            } else
+            {
+                currentWeapon?.StopFire();
+            }
         }
 
         currentWeapon?.SetAim(playerManager.aimInput, 1 + (playerManager.moveInput.magnitude * moveDilation));
 
-        if (playerManager.scrollInput.y != 0)
+        int swapDelta = Mathf.RoundToInt(playerManager.scrollInput.y);
+        if (swapDelta != 0)
         {
-            HandleWeaponSwap(playerManager.scrollInput.y);
+            HandleWeaponSwap(swapDelta);
         }
     }
 
-    private void HandleWeaponSwap(float swapDelta)
+    private void HandleWeaponSwap(int swapDelta)
     {
-        weaponIndex += Mathf.RoundToInt(swapDelta);
+        weaponIndex += swapDelta;
         weaponIndex = weaponIndex % weapons.Count;
 
         currentWeapon?.gameObject.SetActive(false);

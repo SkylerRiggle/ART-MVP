@@ -53,8 +53,8 @@ public class PlayerCamera : MonoBehaviour
         targetPosition.y = ((target.position.y * targetWeight) + (cursorPosition.y * cursorWeight)) * weightDivider;
 
         //Add the current screen shake offset.
-        targetPosition.x += Mathf.Sin(Mathf.Cos(Time.time)) * currentShake;
-        targetPosition.y += Mathf.Cos(Mathf.Sin(Time.time)) * currentShake;
+        targetPosition += ((Vector3)cursorPosition - transform.position).normalized 
+            * (Mathf.Abs(Mathf.Sin(Time.time) * defaultShake) + currentShake);
 
         //Move towards the target position.
         transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSpeed * delta);

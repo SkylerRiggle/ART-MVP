@@ -7,8 +7,8 @@ public abstract class Firearm : MonoBehaviour
     public MouseCursor cursor { get { return _cursor; } }
 
     private bool isAiming;
-    private float maxAngle, angleOffset, moveDilation;
-    protected float currentAngle;
+    private float angleOffset, moveDilation;
+    protected float currentAngle, maxAngle;
     [SerializeField] private float minAngle = 0;
     [SerializeField] private float aimSpeed = 2;
     [SerializeField] private Light2D[] aimLights = new Light2D[0];
@@ -35,6 +35,7 @@ public abstract class Firearm : MonoBehaviour
     }
 
     public abstract void Fire();
+    public abstract void StopFire();
     public abstract void Reload();
 
     public void SetAim(bool isAiming, float dilation)

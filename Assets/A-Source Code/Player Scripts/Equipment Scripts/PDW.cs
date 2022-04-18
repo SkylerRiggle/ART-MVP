@@ -6,12 +6,26 @@ public class PDW : Firearm
     [SerializeField] private ParticleSystem muzzleFlash = null;
     [SerializeField] private Animation flashAnimation = null;
 
+    [SerializeField] private float fireRate = 2;
+    private float timeTillFire;
+
+    private bool isFiring = false;
+
     public override void Fire()
     {
-        shockEvent.Invoke();
-        muzzleFlash.Play();
-        flashAnimation.Play();
+        if (!isFiring && Time.time >= timeTillFire)
+        {
+            shockEvent.Invoke();
+            muzzleFlash.Play();
+            flashAnimation.Play();
+            currentAngle = maxAngle;
+
+            timeTillFire = Time.time + (1 / fireRate);
+            isFiring = true;
+        }
     }
+
+    public override void StopFire() => isFiring = false;
 
     public override void Reload()
     {
