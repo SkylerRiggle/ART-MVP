@@ -3,10 +3,14 @@ using UnityEngine;
 public class PDW : Firearm
 {
     [SerializeField] private GameEvent shockEvent = null;
+    [SerializeField] private ParticleSystem muzzleFlash = null;
+    [SerializeField] private Animation flashAnimation = null;
 
     public override void Fire()
     {
         shockEvent.Invoke();
+        muzzleFlash.Play();
+        flashAnimation.Play();
     }
 
     public override void Reload()
